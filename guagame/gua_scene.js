@@ -1,6 +1,7 @@
 class GuaScene {
   constructor(game) {
     this.game = game
+    this.debugMode = true
     this.elements = []
   }
 
@@ -9,18 +10,27 @@ class GuaScene {
     return i
   }
   addElements(e) {
+    e.scene = this
     this.elements.push(e)
   }
   draw() {
-    log('1111')
     for (var i = 0; i<this.elements.length; i++){
       var e = this.elements[i]
-      log(e,'1')
       this.game.drawImage(e)
     }
   }
 
   update() {
+    if (this.debugMode) {
+      for (var i = 0; i<this.elements.length; i++){
+        var e = this.elements[i]
+        e.debug && e.debug()
+      }
+    }
 
+    for (var i = 0; i<this.elements.length; i++){
+      var e = this.elements[i]
+      e.update()
+    }
   }
 }

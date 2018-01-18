@@ -35,10 +35,16 @@ var enableDebugMode = function (game, enable) {
 
 var __main = function () {
   var images = {
-    bullet: 'img/myb_1.png',
+    bullet: 'img/myb_2.png',
     stone: 'img/meteorBig.png',
+    // stone1: 'img/meteorSmall.png',
     player: 'img/my_1.png',
     sky: 'img/map.png',
+    enemy0: 'img/ep_1.png',
+    enemy1: 'img/ep_2.png',
+    enemy2: 'img/ep_3.png',
+    enemy3: 'img/ep_4.png',
+    enemy4: 'img/ep_4.png',
   }
   var game = GuaGame.instance(30, images, function (g) {
     var s = Scene.new(g)

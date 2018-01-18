@@ -12,23 +12,19 @@ class GuaGame {
     this.context = this.canvas.getContext('2d')
     // events
     var self = this
-    window.addEventListener('keydown', event => {
-      this.keydowns[event.key] = true
+    window.addEventListener('keyup', e => {
+      this.keydowns[event.key] = false
     })
-    window.addEventListener('keyup', function (event) {
-      self.keydowns[event.key] = false
+    window.addEventListener('keydown', event => {
+
+      this.keydowns[event.key] = true
     })
     this.init()
   }
 
-  static instance(...
-                      args) {
-    this
-        .i = this.i || new this(...args,
-    )
-    return
-    this
-        .i
+  static instance(...args) {
+    this.i = this.i || new this(...args)
+    return this.i
   }
 
   drawImage(img) {
@@ -51,7 +47,7 @@ class GuaGame {
   }
 
   runloop() {
-    log(window.fps)
+    // log(window.fps)
     // events
     var g = this
     var actions = Object.keys(g.actions)
@@ -76,9 +72,7 @@ class GuaGame {
 
   textureByName(name) {
     var g = this
-    log('image by name', g.images)
     var img = g.images[name]
-    log(name)
     // var image = {
     //     w: img.width,
     //     h: img.height,
@@ -120,7 +114,7 @@ class GuaGame {
         // 所有图片都成功载入之后, 调用 run
         loads.push(1)
         log('load images', loads.length, names.length)
-        if (loads.length == names.length) {
+        if (loads.length === names.length) {
           log('load images', g.images)
           g.__start()
         }
